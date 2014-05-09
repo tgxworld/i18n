@@ -55,11 +55,9 @@ class I18nBackendTransliterator < Test::Unit::TestCase
     assert_equal "abc#", @transliterator.transliterate("abcſ", "#")
   end
 
-  if RUBY_VERSION >= "1.9"
-    test "default transliterator raises errors for invalid UTF-8" do
-      assert_raise ArgumentError do
-        @transliterator.transliterate("a\x92b")
-      end
+  test "default transliterator raises errors for invalid UTF-8" do
+    assert_raise ArgumentError do
+      @transliterator.transliterate("a\x92b")
     end
   end
 
