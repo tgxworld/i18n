@@ -17,8 +17,9 @@ require 'i18n'
 require 'mocha/setup'
 require 'test_declarative'
 
-class Test::Unit::TestCase
+class I18n::TestCase < Test::Unit::TestCase
   def teardown
+    super
     I18n.locale = nil
     I18n.default_locale = :en
     I18n.load_path = []
@@ -38,9 +39,7 @@ class Test::Unit::TestCase
   def locales_dir
     File.dirname(__FILE__) + '/test_data/locales'
   end
-end
 
-module I18n::Tests
   def self.setup_rufus_tokyo
     require 'rufus/tokyo'
   rescue LoadError => e
